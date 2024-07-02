@@ -28,13 +28,16 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Optional<Project> getProjectById(Long id) {
-        System.out.println(id + " " + "-----====id");
         return projectRepo.findById(id);
     }
 
     @Override
     public Project updateProject(Project project) {
-        return projectRepo.save(project);
+        if (projectRepo.existsById(project.getId())) {
+            return projectRepo.save(project);
+        } else {
+            throw new IllegalArgumentException("Project with ID " + project.getId() + " does not exist.");
+        }
     }
 
 
