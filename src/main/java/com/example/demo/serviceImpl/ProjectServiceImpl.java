@@ -36,7 +36,7 @@ public class ProjectServiceImpl implements ProjectService {
         if (projectRepo.existsById(project.getId())) {
             return projectRepo.save(project);
         } else {
-            throw new IllegalArgumentException("Project with ID " + project.getId() + " does not exist.");
+            throw new IllegalArgumentException("Project with ID " + project.getId() + "does not exist.");
         }
     }
 
